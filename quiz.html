@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Wiz - Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="quiz-page">
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="quiz-info">
+                <h2 id="quiz-title">Loading...</h2>
+                <div class="quiz-meta">
+                    <span id="question-counter">Question 1/5</span>
+                    <span id="time-counter">Time: 00:00</span>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="quiz-progress"></div>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p id="question-text" class="question-text"></p>
+            <div id="options-container" class="options-container"></div>
+        </div>
+        <div class="quiz-controls">
+            <button id="prev-btn" class="nav-btn" disabled>
+                <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button id="next-btn" class="nav-btn">
+                Next <i class="fas fa-arrow-right"></i>
+            </button>
+            <button id="submit-btn" class="submit-btn" style="display: none;">
+                Submit Quiz
+            </button>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div id="results-modal" class="modal">
+        <div class="modal-content results-content">
+            <div class="results-header">
+                <h2>Quiz Complete!</h2>
+                <div class="score-circle">
+                    <span id="final-score">0%</span>
+                </div>
+            </div>
+            
+            <div class="results-details">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-check"></i>
+                        <span>Correct</span>
+                        <span id="correct-answers">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-times"></i>
+                        <span>Incorrect</span>
+                        <span id="incorrect-answers">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Time Taken</span>
+                        <span id="time-taken">0:00</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>XP Earned</span>
+                        <span id="xp-earned">0</span>
+                    </div>
+                </div>
+
+                <div class="performance-analysis">
+                    <h3>Performance Analysis</h3>
+                    <canvas id="performance-chart"></canvas>
+                </div>
+
+                <div class="achievement-earned">
+                    <h3>Achievement Earned!</h3>
+                    <div class="achievement">
+                        <img id="achievement-badge" src="badge.png" alt="Achievement Badge">
+                        <div class="achievement-details">
+                            <h4 id="achievement-title">Quick Learner</h4>
+                            <p id="achievement-description">Completed the quiz in record time!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button onclick="reviewQuiz()" class="review-btn">
+                        <i class="fas fa-search"></i> Review Answers
+                    </button>
+                    <button onclick="submitToReport()" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit to Report
+                    </button>
+                    <button onclick="window.location.href='subjects.html'" class="next-challenge-btn">
+                        <i class="fas fa-forward"></i> Next Challenge
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="userData.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html> 

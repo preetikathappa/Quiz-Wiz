@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Wiz - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Quiz Wiz</div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="learning.html">Learn</a>
+                <a href="subjects.html">Subjects</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Welcome to Quiz Wiz</h1>
+                <p>Test your knowledge, track your progress, and become a quiz master!</p>
+                <div class="cta-buttons">
+                    <button onclick="window.location.href='subjects.html'" class="cta-button">
+                        <i class="fas fa-book"></i> Start Learning
+                    </button>
+                    <button onclick="window.location.href='learning.html'" class="cta-button">
+                        <i class="fas fa-chart-line"></i> Track Progress
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://img.freepik.com/free-vector/student-studying-online_74855-5293.jpg" alt="Student studying online" class="study-image">
+            </div>
+        </div>
+
+        <section class="subjects">
+            <h2>Select a Subject</h2>
+            <div class="subject-grid">
+                <div class="subject-card" data-subject="history">
+                    <i class="fas fa-landmark"></i>
+                    <h3>History</h3>
+                </div>
+                <div class="subject-card" data-subject="science">
+                    <i class="fas fa-flask"></i>
+                    <h3>Science</h3>
+                </div>
+                <div class="subject-card" data-subject="mathematics">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Mathematics</h3>
+                </div>
+                <div class="subject-card" data-subject="literature">
+                    <i class="fas fa-book"></i>
+                    <h3>Literature</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Quiz Wiz</h3>
+                <p>Quiz Wiz is an AI-powered learning platform that helps you master various subjects through interactive quizzes and personalized learning experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="learning.html">Learning</a></p>
+                <p><a href="subjects.html">Subjects</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Quiz Wiz. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="chapters-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Select Chapter</h2>
+            <div id="chapters-list"></div>
+        </div>
+    </div>
+
+    <div id="topics-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Select Topic</h2>
+            <div id="topics-list"></div>
+        </div>
+    </div>
+
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Quiz</h2>
+            <div id="quiz-container"></div>
+            <button id="submit-quiz">Submit Quiz</button>
+        </div>
+    </div>
+
+    <div id="results-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Quiz Results</h2>
+            <div id="results-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

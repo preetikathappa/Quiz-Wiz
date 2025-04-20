@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Wiz - Learning Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="userData.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Quiz Wiz</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="learning.html" class="active">Learn</a>
+                <a href="subjects.html">Subjects</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="learning-dashboard">
+            <div class="dashboard-main">
+                <!-- Progress Overview -->
+                <div class="progress-overview">
+                    <div class="progress-card">
+                        <h3>Total Points</h3>
+                        <div class="progress-value" id="total-points">0</div>
+                        <div class="progress-label">Earned this month</div>
+                    </div>
+                    <div class="progress-card">
+                        <h3>Quizzes Completed</h3>
+                        <div class="progress-value" id="quizzes-completed">0</div>
+                        <div class="progress-label">Total quizzes taken</div>
+                    </div>
+                    <div class="progress-card">
+                        <h3>Average Score</h3>
+                        <div class="progress-value" id="average-score">0%</div>
+                        <div class="progress-label">Overall performance</div>
+                    </div>
+                    <div class="progress-card">
+                        <h3>Learning Streak</h3>
+                        <div class="progress-value" id="learning-streak">0</div>
+                        <div class="progress-label">Days in a row</div>
+                    </div>
+                </div>
+
+                <!-- Performance Analysis -->
+                <div class="performance-section">
+                    <div class="performance-header">
+                        <h2>Performance Analysis</h2>
+                        <select id="time-period" onchange="updatePerformanceChart()">
+                            <option value="week">Last Week</option>
+                            <option value="month" selected>Last Month</option>
+                            <option value="year">Last Year</option>
+                        </select>
+                    </div>
+                    <div class="performance-chart">
+                        <canvas id="performance-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Learning Path -->
+                <div class="learning-path">
+                    <h2>Your Learning Path</h2>
+                    <div class="path-item">
+                        <i class="fas fa-calculator path-icon"></i>
+                        <div class="path-content">
+                            <div class="path-title">Mathematics</div>
+                            <div class="path-progress">
+                                <div class="path-progress-bar" id="math-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="path-item">
+                        <i class="fas fa-flask path-icon"></i>
+                        <div class="path-content">
+                            <div class="path-title">Science</div>
+                            <div class="path-progress">
+                                <div class="path-progress-bar" id="science-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="path-item">
+                        <i class="fas fa-landmark path-icon"></i>
+                        <div class="path-content">
+                            <div class="path-title">History</div>
+                            <div class="path-progress">
+                                <div class="path-progress-bar" id="history-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="achievements-section">
+                    <h2>Your Achievements</h2>
+                    <div class="achievements-grid" id="achievements-container">
+                        <!-- Achievements will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="dashboard-sidebar">
+                <!-- Streak Counter -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Learning Streak</h3>
+                    <div class="streak-counter">
+                        <div class="streak-days" id="sidebar-streak">0</div>
+                        <div class="streak-label">Days in a row</div>
+                    </div>
+                    <p id="streak-message">Start your learning journey today!</p>
+                </div>
+                
+                <!-- Upcoming Quizzes -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Recent Quizzes</h3>
+                    <ul class="upcoming-quizzes" id="recent-quizzes">
+                        <!-- Recent quizzes will be dynamically added here -->
+                    </ul>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Quick Actions</h3>
+                    <button class="quick-quiz-btn" style="width: 100%; margin-bottom: 1rem;" onclick="startQuickQuiz()">
+                        <i class="fas fa-random"></i> Start Quick Quiz
+                    </button>
+                    <button class="progress-btn" style="width: 100%;" onclick="viewDetailedProgress()">
+                        <i class="fas fa-chart-bar"></i> View Detailed Progress
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Quiz Wiz</h3>
+                <p>Quiz Wiz is an AI-powered learning platform that helps you master various subjects through interactive quizzes and personalized learning experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="learning.html">Learning</a></p>
+                <p><a href="subjects.html">Subjects</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Quiz Wiz. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update dashboard with user data
+        function updateDashboard() {
+            // Update progress cards
+            document.getElementById('total-points').textContent = userData.points;
+            document.getElementById('quizzes-completed').textContent = userData.quizzesCompleted;
+            document.getElementById('average-score').textContent = Math.round(userData.averageScore) + '%';
+            document.getElementById('learning-streak').textContent = userData.streak;
+            document.getElementById('sidebar-streak').textContent = userData.streak;
+
+            // Update streak message
+            const streakMessage = document.getElementById('streak-message');
+            if (userData.streak === 0) {
+                streakMessage.textContent = 'Start your learning journey today!';
+            } else if (userData.streak < 3) {
+                streakMessage.textContent = 'Keep going! You\'re doing great!';
+            } else if (userData.streak < 7) {
+                streakMessage.textContent = 'Amazing streak! Don\'t stop now!';
+            } else {
+                streakMessage.textContent = 'You\'re a streak master! Keep it up!';
+            }
+
+            // Update learning paths
+            document.getElementById('math-progress').style.width = userData.learningPaths.mathematics.progress + '%';
+            document.getElementById('science-progress').style.width = userData.learningPaths.science.progress + '%';
+            document.getElementById('history-progress').style.width = userData.learningPaths.history.progress + '%';
+
+            // Update achievements
+            updateAchievements();
+            
+            // Update recent quizzes
+            updateRecentQuizzes();
+            
+            // Update performance chart
+            updatePerformanceChart();
+        }
+
+        // Update achievements display
+        function updateAchievements() {
+            const container = document.getElementById('achievements-container');
+            container.innerHTML = '';
+
+            const achievementIcons = {
+                perfect_score: 'star',
+                quick_learner: 'trophy',
+                streak_master: 'fire',
+                master_mathematics: 'brain',
+                master_science: 'brain',
+                master_history: 'brain'
+            };
+
+            userData.achievements.forEach(achievementId => {
+                const achievement = {
+                    id: achievementId,
+                    title: achievementId.split('_').map(word => 
+                        word.charAt(0).toUpperCase() + word.slice(1)
+                    ).join(' '),
+                    icon: achievementIcons[achievementId] || 'trophy',
+                    description: getAchievementDescription(achievementId)
+                };
+
+                const card = document.createElement('div');
+                card.className = 'achievement-card';
+                card.innerHTML = `
+                    <i class="fas fa-${achievement.icon} achievement-icon"></i>
+                    <div class="achievement-title">${achievement.title}</div>
+                    <div class="achievement-desc">${achievement.description}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Get achievement description
+        function getAchievementDescription(id) {
+            const descriptions = {
+                perfect_score: 'Scored 100% in a quiz',
+                quick_learner: 'Completed 5 quizzes in one day',
+                streak_master: '7-day learning streak',
+                master_mathematics: 'Mastered Mathematics',
+                master_science: 'Mastered Science',
+                master_history: 'Mastered History'
+            };
+            return descriptions[id] || 'Achievement unlocked!';
+        }
+
+        // Update recent quizzes
+        function updateRecentQuizzes() {
+            const container = document.getElementById('recent-quizzes');
+            container.innerHTML = '';
+
+            const recentQuizzes = userData.quizHistory
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 3);
+
+            recentQuizzes.forEach(quiz => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div>${quiz.subject}</div>
+                    <div class="quiz-date">
+                        Score: ${quiz.score}% | ${new Date(quiz.date).toLocaleDateString()}
+                    </div>
+                `;
+                container.appendChild(li);
+            });
+
+            if (recentQuizzes.length === 0) {
+                container.innerHTML = '<li>No quizzes completed yet</li>';
+            }
+        }
+
+        // Update performance chart
+        function updatePerformanceChart() {
+            const timePeriod = document.getElementById('time-period').value;
+            const performanceData = getPerformanceData(timePeriod);
+
+            const ctx = document.getElementById('performance-chart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (window.performanceChart) {
+                window.performanceChart.destroy();
+            }
+
+            window.performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: performanceData.map(q => new Date(q.date).toLocaleDateString()),
+                    datasets: [{
+                        label: 'Quiz Scores',
+                        data: performanceData.map(q => q.score),
+                        borderColor: '#3498db',
+                        tension: 0.1,
+                        fill: true,
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        // Quick quiz function
+        function startQuickQuiz() {
+            window.location.href = 'quiz.html?mode=quick';
+        }
+
+        // Detailed progress function
+        function viewDetailedProgress() {
+            // Implement detailed progress view
+            alert('Detailed progress view will be implemented soon!');
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDashboard();
+        });
+    </script>
+    <a href="index.html">index</a>
+</body>
+</html> 
